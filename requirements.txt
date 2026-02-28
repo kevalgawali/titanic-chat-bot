@@ -10,3 +10,4 @@ streamlit
 requests
 python-dotenv
 tabulate
+altair.vegalite.v4
