@@ -2,7 +2,7 @@
 
 Chat with the Titanic dataset using natural language. Ask questions, get answers and charts.
 
-Built with FastAPI + LangChain + Streamlit.
+Built as a single Streamlit application with local LLM calls.
 
 ## Setup
 
@@ -28,47 +28,41 @@ Get a free token at [huggingface.co/settings/tokens](https://huggingface.co/sett
 
 ## Running Locally
 
-You need two terminals:
+Start the Streamlit interface only:
 
-**Terminal 1 — Backend (FastAPI):**
 ```bash
-uvicorn main:app --reload
+streamlit run streamlit_app.py
 ```
-Runs on http://localhost:8000
 
-**Terminal 2 — Frontend (Streamlit):**
-```bash
-streamlit run app.py
-```
-Opens on http://localhost:8501
+All logic (including `ask()` calls and model inference) happen inside the same process. There is no separate backend.
 
-The Streamlit app auto-detects if the backend is running. If it can't reach FastAPI, it runs the agent directly (no backend needed).
 
 ## Deploy on Streamlit Cloud
 
 1. Push this repo to GitHub
 2. Go to [share.streamlit.io](https://share.streamlit.io)
 3. Connect your GitHub repo
-4. Set **Main file path** to `app.py`
+4. Set **Main file path** to `streamlit_app.py`
 5. In **Advanced settings > Secrets**, add:
    ```
    HUGGINGFACEHUB_API_TOKEN = "hf_your-token-here"
    ```
 6. Deploy
 
-On Streamlit Cloud there's no FastAPI server, so the app automatically falls back to running the LangChain agent directly. Everything works the same.
+Since the application is self‑contained, there is no backend dependency—Streamlit Cloud will run the chat UI directly.
+
 
 ## Project Structure
 
 ```
 assignment1/
-├── agent.py           # LangChain pandas agent logic
-├── main.py            # FastAPI backend
-├── app.py             # Streamlit frontend
+├── agent.py           # data/LLM logic (query the dataframe)
+├── streamlit_app.py   # single Streamlit UI
 ├── requirements.txt
 ├── .env.example
 └── README.md
 ```
+
 
 ## What You Can Ask
 

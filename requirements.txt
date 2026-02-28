@@ -1,12 +1,6 @@
-fastapi
-uvicorn
-langchain
-langchain-huggingface
-langchain-experimental
 pandas
 matplotlib
 seaborn
 streamlit==1.54.0
-requests
 python-dotenv
-tabulate
+huggingface-hub
