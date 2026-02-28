@@ -6,7 +6,7 @@ langchain-experimental
 pandas
 matplotlib
 seaborn
-streamlit
+streamlit==1.54.0
 requests
 python-dotenv
 tabulate
